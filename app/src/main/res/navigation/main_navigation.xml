@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.challenge.weatherapp.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_cityWeatherBreakDownDialogFragment"
+            app:destination="@id/cityWeatherBreakDownDialogFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/cityWeatherBreakDownDialogFragment"
+        android:name="com.challenge.weatherapp.ui.main.CityWeatherBreakDownDialogFragment"
+        android:label="fragment_city_weather_break_down_dialog"
+        tools:layout="@layout/fragment_city_weather_break_down_dialog" >
+        <argument
+            android:name="weatherDetails"
+            app:argType="com.challenge.weatherapp.api.datamodels.WeatherByCityNameResponse" />
+    </dialog>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.challenge.weatherapp.ui.main.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
